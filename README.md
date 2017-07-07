@@ -1,16 +1,43 @@
 # react-rtstar
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+[![NPM](https://nodei.co/npm/react-rtstar.png?compact=true)](https://npmjs.org/package/react-rtstar)
 
-Describe react-rtstar here.
+react-rtstar is a react component to give you opportunity to make great and easy to use rating/notation system.
+For the moment this version cannot allow you to edit your rating (no event support yet).
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+## Usage
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+This component is designed to be very easy to use.
+You must include [**FontAwesome**](http://fontawesome.io/) to use **react-rtstar**
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+### Import module
+
+```javascript
+import RtStar from 'react-rtstar'
+```
+
+### Add to your component
+
+```javascript
+<RtStar value={your_value} max={max_stars} color={custom_color} size={custom_size} />
+```
+
+# Screenshot
+
+![Screenshot of demo](img/demo.png)
+
+# Launch demo
+
+1. Fork, download or clone this repository.
+2. `cd react-rtstar && npm install`
+3. `npm start`
+4. Go to localhost:3000 to have a preview of demo
+
+## Props
+
+| Name      | Type   | Description     | Default value | Required |
+|-----------|--------|-----------------|---------------|----------|
+| **value** | Number |                 | /             | true     |
+| max       | Number | Number of stars | 5             | false    |
+| color     | String | Color of stars  | #FFBF00       | false    |
+| size      | Number | Size of stars   | 16            | false    |

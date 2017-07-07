@@ -18,7 +18,10 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "react-fontawesome": "^1.6.1"
+  },
   "peerDependencies": {
     "react": "15.x"
   },
@@ -27,11 +30,17 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
-  "author": "",
-  "homepage": "",
+  "author": "dm67x",
+  "homepage": "https://github.com/dm67x/react-rtstar",
   "license": "MIT",
-  "repository": "",
+  "repository": "dm67x/react-rtstar",
   "keywords": [
-    "react-component"
+    "react-component",
+    "react",
+    "rating",
+    "notation",
+    "star",
+    "rtstar",
+    "react-rtstar"
   ]
 }
