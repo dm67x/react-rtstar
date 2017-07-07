@@ -25,7 +25,6 @@ class RtStar extends Component {
   generateStars() {
     const { max, value, size, color } = this.props
 
-    debugger
     let stars = []
     for (let i = 0; i < max; i++) {
       const val = value - i
@@ -37,17 +36,11 @@ class RtStar extends Component {
   }
 
   render() {
-
-    const { size } = this.props
-
     return (
-
       <div>
         {this.generateStars()}
       </div>
-
     )
-
   }
 
 }
