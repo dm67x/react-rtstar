@@ -1,36 +1,45 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Star from './Star'
 
 class RtStar extends Component {
 
-  static defaultProps = {
-    value: 0,
-    max: 5,
-    size: 16,
-    color: "#FFBF00"
-  }
-
-  static propTypes = {
-    value: PropTypes.number,
-    max: PropTypes.number,
-    size: PropTypes.number,
-    color: PropTypes.string
-  }
-
   constructor(props) {
     super(props)
+
+    this.state = {
+      values: props.values
+    }
   }
 
-  generateStars() {
-    const { max, value, size, color } = this.props
+  _addValue(value) {
+    this.setState(prevState => {
+      return {
+        values: prevState.values.concat(parseInt(value))
+      }
+    })
+  }
 
+  _result() {
+    const { values } = this.state
+    let sum = values.reduce((pv, cv) => (pv + cv), 0)
+    return Math.round(sum / values.length)
+  }
+
+  _renderStars() {
+    const { show, blankStar, fillStar } = this.props
+    const result = this._result()
+
+    // Variables
     let stars = []
-    for (let i = 0; i < max; i++) {
-      const val = value - i
-      if (Math.trunc(val) >= 1) stars.push(<Star size={size} color={color} key={i}/>)
-      else if (val < 1 && val > 0) stars.push(<Star type="half" size={size} color={color} key={i}/>)
-      else stars.push(<Star type="empty" size={size} color={color} key={i}/>)
+    let nresult = result
+
+    for (let i = 0; i < show; i++) {
+      if (nresult > 0) {
+        stars.push(<span key={i}>{fillStar}</span>)
+        nresult -= 1
+      } else {
+        stars.push(<span key={i}>{blankStar}</span>)
+      }
     }
     return stars
   }
@@ -38,11 +47,23 @@ class RtStar extends Component {
   render() {
     return (
       <div>
-        {this.generateStars()}
+        {this._renderStars()}
       </div>
     )
   }
 
+}
+
+RtStar.propTypes = {
+  values: PropTypes.array,
+  show: PropTypes.number,
+  blankStar: PropTypes.node.isRequired,
+  fillStar: PropTypes.node.isRequired 
+}
+
+RtStar.defaultProps = {
+  values: [],
+  show: 5
 }
 
 export default RtStar
