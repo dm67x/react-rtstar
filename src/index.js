@@ -18,32 +18,32 @@ class RtStar extends React.Component {
         const { max } = this.props
         const that = this
 
-        this.refs.stars.addEventListener("mouseenter", _ => {
+        this.stars.current.addEventListener("mouseenter", _ => {
             that.setState({
                 inside: true
             })
         })
 
-        this.refs.stars.addEventListener("mouseleave", _ => {
+        this.stars.current.addEventListener("mouseleave", _ => {
             that.setState({
                 inside: false
             })
         })
 
         for (let i = 0; i < max; i++) {
-            this.refs['star' + i].addEventListener("mouseenter", e => {
+            this['star' + i].current.addEventListener("mouseenter", e => {
                 that.setState({
                     currentStar: e.target.getAttribute('data-value')
                 })
             })
 
-            this.refs['star' + i].addEventListener("mouseleave", _ => {
+            this['star' + i].current.addEventListener("mouseleave", _ => {
                 that.setState({
                     currentStar: null
                 })
             })
 
-            this.refs['star' + i].addEventListener('click', e => {
+            this['star' + i].current.addEventListener('click', e => {
                 let target = e.target.nodeName === "path" ? e.target.parentNode : e.target
                 const val = parseInt(target.getAttribute('data-value'))
 
@@ -67,16 +67,16 @@ class RtStar extends React.Component {
         if (inside) {
             if (currentStar == null) {
                 for (let i = 0; i < max; i++) {
-                    this.refs['star' + i].childNodes[0].style = "fill: " + inactiveColor
+                    this['star' + i].current.childNodes[0].style = "fill: " + inactiveColor
                 }
             } else {
                 for (let i = 0; i < currentStar; i++) {
-                    this.refs['star' + i].childNodes[0].style = "fill: " + activeColor
+                    this['star' + i].current.childNodes[0].style = "fill: " + activeColor
                 }
             }
         } else {
             for (let i = 0; i < max; i++) {
-                this.refs['star' + i].childNodes[0].style = "fill: " + (i < currentValue ? activeColor : inactiveColor)
+                this['star' + i].current.childNodes[0].style = "fill: " + (i < currentValue ? activeColor : inactiveColor)
             }
         }
     }
