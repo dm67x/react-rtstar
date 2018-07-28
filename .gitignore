@@ -1,3 +1,5 @@
 node_modules
 .cache
 lib
+demo
+package-lock.json

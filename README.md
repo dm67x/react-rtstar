@@ -1,4 +1,4 @@
-# react-rtstar (Version 3)
+# react-rtstar
 
 [![NPM](https://nodei.co/npm/react-rtstar.png?compact=true)](https://npmjs.org/package/react-rtstar)
 
