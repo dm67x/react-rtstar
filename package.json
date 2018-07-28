@@ -1,6 +1,6 @@
 {
   "name": "react-rtstar",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "react-rtstar React component",
   "main": "lib/rtstar.js",
   "scripts": {
