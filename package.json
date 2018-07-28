@@ -2,15 +2,14 @@
   "name": "react-rtstar",
   "version": "2.0.1",
   "description": "react-rtstar React component",
-  "main": "dist/rtstar.js",
-  "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
-  ],
+  "main": "lib/rtstar.js",
+  "umd:main": "lib/rtstar.umd.js",
+  "module": "lib/rtstar.m.js",
+  "source": "src/rtstar.js",
+  "files": ["lib"],
   "scripts": {
-    "build": "./node_modules/.bin/parcel src/rtstar.js",
+    "dev": "./node_modules/.bin/microbundle watch",
+    "build": "./node_modules/.bin/microbundle",
     "start": "./node_modules/.bin/parcel demo/index.html --public-url ./ --no-hmr"
   },
   "peerDependencies": {
@@ -20,6 +19,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "microbundle": "^0.6.0",
     "node-sass": "^4.9.2",
     "parcel-bundler": "^1.9.7",
     "prop-types": "^15.6.2",
