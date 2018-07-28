@@ -20881,7 +20881,8 @@ var RtStar = function (_React$Component) {
 
         _this.state = {
             values: props.values,
-            currentStar: null
+            currentStar: null,
+            inside: false
         };
         return _this;
     }
@@ -20893,6 +20894,18 @@ var RtStar = function (_React$Component) {
 
             var that = this;
 
+            this.refs.stars.addEventListener("mouseenter", function (_) {
+                that.setState({
+                    inside: true
+                });
+            });
+
+            this.refs.stars.addEventListener("mouseleave", function (_) {
+                that.setState({
+                    inside: false
+                });
+            });
+
             for (var i = 0; i < max; i++) {
                 this.refs['star' + i].addEventListener("mouseenter", function (e) {
                     that.setState({
@@ -20900,7 +20913,7 @@ var RtStar = function (_React$Component) {
                     });
                 });
 
-                this.refs['star' + i].addEventListener("mouseleave", function (e) {
+                this.refs['star' + i].addEventListener("mouseleave", function (_) {
                     that.setState({
                         currentStar: null
                     });
@@ -20923,7 +20936,8 @@ var RtStar = function (_React$Component) {
         value: function componentDidUpdate() {
             var _state = this.state,
                 values = _state.values,
-                currentStar = _state.currentStar;
+                currentStar = _state.currentStar,
+                inside = _state.inside;
             var _props = this.props,
                 max = _props.max,
                 inactiveColor = _props.inactiveColor,
@@ -20935,13 +20949,19 @@ var RtStar = function (_React$Component) {
                 return acc + val;
             }) / values.length);
 
-            if (currentStar == null) {
-                for (var i = currentValue; i < max; i++) {
-                    this.refs['star' + i].childNodes[0].style = "fill: " + inactiveColor;
+            if (inside) {
+                if (currentStar == null) {
+                    for (var i = 0; i < max; i++) {
+                        this.refs['star' + i].childNodes[0].style = "fill: " + inactiveColor;
+                    }
+                } else {
+                    for (var _i = 0; _i < currentStar; _i++) {
+                        this.refs['star' + _i].childNodes[0].style = "fill: " + activeColor;
+                    }
                 }
             } else {
-                for (var _i = 0; _i < currentStar; _i++) {
-                    this.refs['star' + _i].childNodes[0].style = "fill: " + activeColor;
+                for (var _i2 = 0; _i2 < max; _i2++) {
+                    this.refs['star' + _i2].childNodes[0].style = "fill: " + (_i2 < currentValue ? activeColor : inactiveColor);
                 }
             }
         }
@@ -20993,7 +21013,7 @@ var RtStar = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                null,
+                { ref: 'stars' },
                 this.renderStars(currentValue)
             );
         }
@@ -21036,6 +21056,6 @@ var _rtstar2 = _interopRequireDefault(_rtstar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_rtstar2.default, { size: '100px' }), document.getElementById("app"));
+_reactDom2.default.render(_react2.default.createElement(_rtstar2.default, { size: '30px' }), document.getElementById("app"));
 },{"react":"../node_modules/react/react.js","react-dom":"../node_modules/react-dom/index.js","../src/rtstar":"../src/rtstar.js"}]},{},["index.js"], null)
 //# sourceMappingURL=demo.0e33aa35.map

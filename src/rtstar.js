@@ -6,13 +6,26 @@ class RtStar extends React.Component {
         super(props)
         this.state = {
             values: props.values,
-            currentStar: null
+            currentStar: null,
+            inside: false
         }
     }
 
     componentDidMount() {
         const { max } = this.props
         const that = this
+
+        this.refs.stars.addEventListener("mouseenter", _ => {
+            that.setState({
+                inside: true
+            })
+        })
+
+        this.refs.stars.addEventListener("mouseleave", _ => {
+            that.setState({
+                inside: false
+            })
+        })
 
         for (let i = 0; i < max; i++) {
             this.refs['star' + i].addEventListener("mouseenter", e => {
@@ -21,7 +34,7 @@ class RtStar extends React.Component {
                 })
             })
 
-            this.refs['star' + i].addEventListener("mouseleave", e => {
+            this.refs['star' + i].addEventListener("mouseleave", _ => {
                 that.setState({
                     currentStar: null
                 })
@@ -41,20 +54,26 @@ class RtStar extends React.Component {
     }
 
     componentDidUpdate() {
-        const { values, currentStar } = this.state
+        const { values, currentStar, inside } = this.state
         const { max, inactiveColor, activeColor } = this.props
 
         let currentValue = 0
         if (values.length > 0) 
             currentValue = Math.round(values.reduce((acc, val) => acc + val) / values.length)
 
-        if (currentStar == null) {
-            for (let i = currentValue; i < max; i++) {
-                this.refs['star' + i].childNodes[0].style = "fill: " + inactiveColor
+        if (inside) {
+            if (currentStar == null) {
+                for (let i = 0; i < max; i++) {
+                    this.refs['star' + i].childNodes[0].style = "fill: " + inactiveColor
+                }
+            } else {
+                for (let i = 0; i < currentStar; i++) {
+                    this.refs['star' + i].childNodes[0].style = "fill: " + activeColor
+                }
             }
         } else {
-            for (let i = 0; i < currentStar; i++) {
-                this.refs['star' + i].childNodes[0].style = "fill: " + activeColor
+            for (let i = 0; i < max; i++) {
+                this.refs['star' + i].childNodes[0].style = "fill: " + (i < currentValue ? activeColor : inactiveColor)
             }
         }
     }
@@ -98,7 +117,7 @@ class RtStar extends React.Component {
             currentValue = Math.round(values.reduce((acc, val) => acc + val) / values.length)
 
         return (
-            <div>
+            <div ref="stars">
                 {this.renderStars(currentValue)}
             </div>
         )
