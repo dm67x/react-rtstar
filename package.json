@@ -3,28 +3,24 @@
   "version": "3.0.0",
   "description": "react-rtstar React component",
   "main": "lib/rtstar.js",
-  "umd:main": "lib/rtstar.umd.js",
-  "module": "lib/rtstar.m.js",
-  "source": "src/rtstar.js",
-  "files": ["lib"],
   "scripts": {
-    "dev": "./node_modules/.bin/microbundle watch",
-    "build": "./node_modules/.bin/microbundle",
-    "start": "./node_modules/.bin/parcel demo/index.html --public-url ./ --no-hmr"
+    "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack --progress --colors --watch",
+    "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack"
   },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "microbundle": "^0.6.0",
     "node-sass": "^4.9.2",
-    "parcel-bundler": "^1.9.7",
     "prop-types": "^15.6.2",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   },
   "author": "dm67x",
   "homepage": "https://github.com/dm67x/react-rtstar",
@@ -38,5 +34,6 @@
     "star",
     "rtstar",
     "react-rtstar"
-  ]
+  ],
+  "dependencies": {}
 }
