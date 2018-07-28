@@ -9,6 +9,9 @@ class RtStar extends React.Component {
             currentStar: null,
             inside: false
         }
+        this.stars = React.createRef()
+        for (let i = 0; i < props.max; i++)
+            this["star" + i] = React.createRef()
     }
 
     componentDidMount() {
@@ -89,7 +92,7 @@ class RtStar extends React.Component {
                 width={size}
                 height={size}
                 viewBox="0 0 896 831.93799"
-                ref={"star" + key}>
+                ref={this["star" + key]}>
                 <path
                     style={{fill: (active ? activeColor : inactiveColor)}}
                     d="M 896,320 582.5,279.219 448,0 313.469,279.219 0,320 230.469,528.875 171,831.938 448,683.126 725.062,831.938 665.5,528.875 Z" />
@@ -117,7 +120,7 @@ class RtStar extends React.Component {
             currentValue = Math.round(values.reduce((acc, val) => acc + val) / values.length)
 
         return (
-            <div ref="stars">
+            <div ref={this.stars}>
                 {this.renderStars(currentValue)}
             </div>
         )
