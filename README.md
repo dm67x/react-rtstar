@@ -25,13 +25,6 @@ import RtStar from 'react-rtstar'
   inactiveColor={inactive_color_for_stars} />
 ```
 
-# Launch demo
-
-1. Fork, download or clone this repository.
-2. `cd react-rtstar && npm install`
-3. `npm start`
-4. Open index.html inside dist folder
-
 ## Props
 
 | Name          | Type            | Description                | Default value | Required |
