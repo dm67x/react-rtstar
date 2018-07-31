@@ -25,6 +25,14 @@ import RtStar from 'react-rtstar'
   inactiveColor={inactive_color_for_stars} />
 ```
 
+## Demo
+
+1. Clone this repo
+2. ```cd react-rtstar && npm install```
+3. ```npm run dev```
+4. Go to demo folder and open index.html with web browser
+5. That's it ;)
+
 ## Props
 
 | Name          | Type            | Description                | Default value | Required |
@@ -34,4 +42,3 @@ import RtStar from 'react-rtstar'
 | inactiveColor | String          | Inactive star color        | "gray"        | false    |
 | activeColor   | String          | Active star color          | "orange"      | false    |
 | size          | String          | Size of stars              | "30px"        | false    |
-| star (WIP)    | Node            | Star form (SVG)            | Normal star   | false    |
