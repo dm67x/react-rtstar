@@ -1,10 +1,14 @@
 <p align="center">
-  <img src="rtstar.png" alt="react-rtstar logo" width="100%" height="auto">
+  <img src="rtstar.png" alt="react-rtstar logo" width="400px" height="auto">
 </p>
 
 # react-rtstar
 
-[![NPM](https://nodei.co/npm/react-rtstar.png?compact=true)](https://npmjs.org/package/react-rtstar)
+<p align="center">
+  <a href="https://npmjs.org/package/react-rtstar" target="_blank">
+    <img src="https://nodei.co/npm/react-rtstar.png?compact=true">
+  </a>
+</p>
 
 RtStar is a react component to help you create a good notation system, easily with full customization.
 
