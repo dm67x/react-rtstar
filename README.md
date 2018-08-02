@@ -31,6 +31,14 @@ import RtStar from 'react-rtstar'
   inactiveColor={inactive_color_for_stars} />
 ```
 
+#### Callback function "onStateChanged" usage
+
+```javascript
+// onStateChanged have only one parameter and it contains the array of values
+// onStateChanged is called when user click on star (so when he rates)
+<RtStar onStateChanged={(values) => console.log(values)}>
+```
+
 ## Demo
 
 1. Clone this repo
@@ -41,10 +49,11 @@ import RtStar from 'react-rtstar'
 
 ## Props
 
-| Name          | Type            | Description                | Default value | Required |
-|---------------|-----------------|----------------------------|---------------|----------|
-| values        | Array of number | Array of values            | []            | false    |
-| max           | Number          | Number of stars to display | 5             | false    |
-| inactiveColor | String          | Inactive star color        | "gray"        | false    |
-| activeColor   | String          | Active star color          | "orange"      | false    |
-| size          | String          | Size of stars              | "30px"        | false    |
+| Name           | Type             | Description                | Default value   | Required |
+|----------------|------------------|----------------------------|-----------------|----------|
+| values         | Array of numbers | Array of values            | []              | false    |
+| max            | Number           | Number of stars to display | 5               | false    |
+| inactiveColor  | String           | Inactive star color        | "gray"          | false    |
+| activeColor    | String           | Active star color          | "orange"        | false    |
+| size           | String           | Size of stars                                | "30px"        | false    |
+| onStateChanged | Function        | Callback when state changed (values changed) | Empty function | false

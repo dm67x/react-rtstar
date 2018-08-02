@@ -15,7 +15,7 @@ class RtStar extends React.Component {
     }
 
     componentDidMount() {
-        const { max } = this.props
+        const { max, onStateChanged } = this.props
         const that = this
 
         this.stars.current.addEventListener("mouseenter", _ => {
@@ -51,6 +51,8 @@ class RtStar extends React.Component {
                     return {
                         values: prevState.values.concat([val])
                     }
+                }, () => {
+                    onStateChanged(this.state.values)
                 })
             })
         }
@@ -132,7 +134,8 @@ RtStar.propTypes = {
     max: PropTypes.number,
     inactiveColor: PropTypes.string,
     activeColor: PropTypes.string,
-    size: PropTypes.string
+    size: PropTypes.string,
+    onStateChanged: PropTypes.func
 }
 
 RtStar.defaultProps = {
@@ -140,7 +143,8 @@ RtStar.defaultProps = {
     max: 5,
     inactiveColor: "gray",
     activeColor: "orange",
-    size: "30px"
+    size: "30px",
+    onStateChanged: () => {}
 }
 
 export default RtStar
