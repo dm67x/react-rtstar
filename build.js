@@ -9,9 +9,6 @@ const shared = {
     entryPoints: ['rtstar.tsx'],
     bundle: true,
     minify: true,
-    loader: {
-        '.ts': 'tsx',
-    },
     external: Object.keys(deps).concat(Object.keys(peer)),
 }
 
