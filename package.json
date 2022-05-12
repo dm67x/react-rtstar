@@ -1,26 +1,22 @@
 {
   "name": "react-rtstar",
-  "version": "3.0.5",
+  "version": "4.0.0",
   "description": "react-rtstar React component",
   "main": "lib/rtstar.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack --mode=development --progress --colors --watch",
-    "build": "./node_modules/.bin/webpack --mode=production"
+    "dev": ".\\node_modules\\.bin\\esbuild rtstar.tsx --bundle --outfile=lib/rtstar.js --watch",
+    "build": ".\\node_modules\\.bin\\esbuild --minify rtstar.tsx --bundle --outfile=lib/rtstar.js"
   },
   "peerDependencies": {
-    "react": "16.x"
+    "react": "18.x"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "node-sass": "^4.9.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "webpack": "^4.16.3",
-    "webpack-cli": "^3.1.0"
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "esbuild": "^0.14.39",
+    "prettier": "2.6.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "author": "dm67x",
   "homepage": "https://github.com/dm67x/react-rtstar",
@@ -34,6 +30,5 @@
     "star",
     "rtstar",
     "react-rtstar"
-  ],
-  "dependencies": {}
+  ]
 }
